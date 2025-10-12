@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakuntala Charitable Trust - Serving Humanity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #1a5276;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            background-color: var(--white);
+            padding: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .indicators-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            max-width: 200px;
+        }
+
+        .indicator-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(26, 82, 118, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .indicator-icon i {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .indicator h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Initiatives Section */
+        .initiatives {
+            background-color: #f5f7fa;
+        }
+
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .initiative-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .initiative-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .initiative-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 2rem;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .initiative-content {
+            padding: 25px;
+        }
+
+        .initiative-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Impact Section */
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Volunteer Section */
+        .volunteer {
+            background: linear-gradient(rgba(231, 76, 60, 0.9), rgba(231, 76, 60, 0.9)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2120&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+        }
+
+        .volunteer h2 {
+            color: var(--white);
+        }
+
+        .volunteer h2:after {
+            background-color: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .volunteer-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .volunteer-text {
+            flex: 1;
+        }
+
+        .volunteer-text p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .volunteer-form {
+            flex: 1;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-control:focus {
+            border-color: var(--white);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Donate Section */
+        .donate {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1551836026-d5c88ac5c73d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .donate h2 {
+            color: var(--white);
+        }
+
+        .donate h2:after {
+            background-color: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .donate p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .donate-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .donate-option {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+        }
+
+        .donate-option h3 {
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-form .form-group label {
+            color: var(--dark);
+        }
+
+        .contact-form .form-control {
+            background-color: var(--white);
+            color: var(--text);
+            border: 1px solid #ddd;
+        }
+
+        .contact-form .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-content, .volunteer-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text, .contact-info, .contact-form, .volunteer-text, .volunteer-form {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-btns, .donate-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stat {
+                width: 50%;
+            }
+            
+            .indicators-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping" style="font-size: 2rem; color: var(--primary); margin-right: 10px;"></i>
+                <h1>Sakuntala Charitable Trust</h1>
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#initiatives">Initiatives</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#volunteer">Volunteer</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Creating a More Equitable Society</h1>
+            <p>Sakuntala Charitable Trust is a nationally recognized non-profit organization committed to serving society through humanitarian initiatives across India.</p>
+            <div class="hero-btns">
+                <a href="#donate" class="btn">Donate Now</a>
+                <a href="#volunteer" class="btn btn-outline">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-indicators">
+        <div class="container indicators-container">
+            <div class="indicator">
+                <div class="indicator-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Certified Trust</h3>
+                <p>Registered under Indian Trusts Act</p>
+            </div>
+            <div class="indicator">
+                <div class="indicator-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3>Transparent</h3>
+                <p>100% donation accountability</p>
+            </div>
+            <div class="indicator">
+                <div class="indicator-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Community Focused</h3>
+                <p>Serving since 2005</p>
+            </div>
+            <div class="indicator">
+                <div class="indicator-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h3>Tax Exempt</h3>
+                <p>80G & 12A certified</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Learn about our mission, vision, and the values that drive our work</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Sakuntala Charitable Trust is a nationally recognized non-profit organization committed to serving society through a wide range of humanitarian initiatives across India. Established with a strong vision of upliftment and social justice, we work actively to create positive change.</p>
+                    <p>Our mission is to create a more equitable and compassionate society by empowering the underprivileged, protecting the vulnerable, and promoting inclusive development.</p>
+                    <p>Through educational programs, legal aid, health initiatives, and community support, Sakuntala Charitable Trust continues to make a meaningful impact on the lives of countless individuals across the nation.</p>
+                    <a href="#contact" class="btn" style="margin-top: 20px;">Get Involved</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80" alt="Community Service">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Initiatives Section -->
+    <section class="initiatives" id="initiatives">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Initiatives</h2>
+                <p>We focus on several key areas to create lasting social impact</p>
+            </div>
+            <div class="initiatives-grid">
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Social Service</h3>
+                        <p>We engage in various community service activities to address immediate needs and build stronger, more resilient communities.</p>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Human Rights Protection</h3>
+                        <p>We work to protect and promote human rights through awareness campaigns, legal aid, and advocacy efforts.</p>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Child & Women Welfare</h3>
+                        <p>Our programs focus on the empowerment, safety, and development of children and women from marginalized communities.</p>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Free Education</h3>
+                        <p>We provide free education to children above 4 years old, ensuring access to quality learning opportunities.</p>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Support for SC/ST & EWS</h3>
+                        <p>We offer specialized support programs for Scheduled Castes, Scheduled Tribes, and Economically Weaker Sections.</p>
+                    </div>
+                </div>
+                <div class="initiative-card">
+                    <div class="initiative-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="initiative-content">
+                        <h3>Health Initiatives</h3>
+                        <p>We organize health camps, awareness programs, and provide medical assistance to underserved communities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Impact</h2>
+                <p>Together, we've made a difference in countless lives across India</p>
+            </div>
+            <div class="impact-stats">
+                <div class="stat">
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-text">Lives Impacted</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-text">Children Educated</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-text">Communities Served</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">18</div>
+                    <div class="stat-text">Years of Service</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work in Action</h2>
+                <p>See how we're making a difference in communities across India</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Education Program">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559027615-cfa462850979?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Health Camp">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Community Service">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559027615-cfa462850979?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Women Empowerment">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Section -->
+    <section class="volunteer" id="volunteer">
+        <div class="container">
+            <div class="section-header">
+                <h2>Become a Volunteer</h2>
+                <p>Join our mission to create positive change in communities across India</p>
+            </div>
+            <div class="volunteer-content">
+                <div class="volunteer-text">
+                    <p>Volunteers are the backbone of our organization. Your time, skills, and passion can make a real difference in the lives of those we serve.</p>
+                    <p>We offer various volunteering opportunities including:</p>
+                    <ul style="color: rgba(255,255,255,0.9); margin: 20px 0 20px 20px;">
+                        <li>Teaching and mentoring children</li>
+                        <li>Organizing community events and awareness campaigns</li>
+                        <li>Providing professional skills (medical, legal, technical)</li>
+                        <li>Fundraising and outreach activities</li>
+                        <li>Administrative support</li>
+                    </ul>
+                    <p>Fill out the form to express your interest, and our team will contact you with suitable opportunities.</p>
+                </div>
+                <div class="volunteer-form">
+                    <form id="volunteerForm">
+                        <div class="form-group">
+                            <label for="vol-name">Full Name</label>
+                            <input type="text" id="vol-name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-email">Email Address</label>
+                            <input type="email" id="vol-email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-phone">Phone Number</label>
+                            <input type="tel" id="vol-phone" class="form-control" placeholder="Your Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vol-skills">Skills & Interests</label>
+                            <textarea id="vol-skills" class="form-control" placeholder="Tell us about your skills, interests, and how you'd like to contribute" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; background-color: var(--accent);">Submit Application</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="donate" id="donate">
+        <div class="container">
+            <div class="section-header">
+                <h2>Support Our Mission</h2>
+                <p>Your contribution helps us continue our work towards creating a more equitable society</p>
+            </div>
+            <div class="donate-options">
+                <div class="donate-option">
+                    <h3>Bank Transfer</h3>
+                    <p>You can directly transfer funds to our bank account:</p>
+                    <p><strong>Bank:</strong> Punjab National Bank</p>
+                    <p><strong>Account Name:</strong> Sakuntala Charitable Trust</p>
+                    <p><strong>Account Number:</strong> XXXX XXXX XXXX XXXX</p>
+                    <p><strong>IFSC Code:</strong> PUNBXXXXXX</p>
+                </div>
+                <div class="donate-option">
+                    <h3>UPI Payment</h3>
+                    <p>Scan the QR code or use our UPI ID for quick donations:</p>
+                    <div style="background: white; padding: 15px; border-radius: 8px; display: inline-block; margin: 15px 0;">
+                        <!-- QR Code Placeholder -->
+                        <div style="width: 150px; height: 150px; background: #eee; display: flex; align-items: center; justify-content: center;">
+                            <span>QR Code</span>
+                        </div>
+                    </div>
+                    <p><strong>UPI ID:</strong> sakuntalatrust@pnb</p>
+                </div>
+                <div class="donate-option">
+                    <h3>Other Ways to Help</h3>
+                    <p>Besides monetary donations, you can also:</p>
+                    <ul style="text-align: left; color: rgba(255,255,255,0.9); margin-top: 15px;">
+                        <li>Volunteer your time and skills</li>
+                        <li>Donate essential supplies</li>
+                        <li>Spread awareness about our cause</li>
+                        <li>Organize fundraising events</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#contact" class="btn" style="margin-top: 40px; background-color: var(--accent);">Contact Us to Donate</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Get in touch to learn more about our work or to get involved</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>We'd love to hear from you. Whether you're interested in volunteering, donating, or learning more about our initiatives, please reach out.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Our Address</h4>
+                                <p>123 Charity Lane, Community Road<br>Mumbai, Maharashtra 400001</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone Number</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email Address</h4>
+                                <p>info@sakuntalatrust.org</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sakuntala Charitable Trust</h3>
+                    <p>Creating a more equitable and compassionate society through education, empowerment, and social justice initiatives.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#initiatives">Initiatives</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Initiatives</h3>
+                    <ul>
+                        <li><a href="#">Social Service</a></li>
+                        <li><a href="#">Human Rights Protection</a></li>
+                        <li><a href="#">Child & Women Welfare</a></li>
+                        <li><a href="#">Free Education</a></li>
+                        <li><a href="#">SC/ST & EWS Support</a></li>
+                        <li><a href="#">Health Initiatives</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Transparency Reports</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sakuntala Charitable Trust. All Rights Reserved. | Registered under Indian Trusts Act</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        // Form Submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        document.getElementById('volunteerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest in volunteering! We will contact you shortly.');
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate stats counter
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if(current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                }, 20);
+            });
+        }
+
+        // Trigger stats animation when section is in view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.impact'));
+    </script>
+</body>
+</html>
