@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Sakuntala Charitable Trust</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #1a5276;
+            --secondary: #e74c3c;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            display: inline-block;
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Gallery Hero Section */
+        .gallery-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.9)), url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 180px 0 100px;
+        }
+
+        .gallery-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .gallery-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Photo Timeline */
+        .photo-timeline {
+            background-color: var(--white);
+            padding: 60px 0;
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .timeline-date {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-date:before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .timeline-location {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+            gap: 15px;
+            padding: 10px 0;
+        }
+
+        .slider::-webkit-scrollbar {
+            display: none; /* Chrome, Safari and Opera */
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .slider-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .slider-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .slider-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .slider-item:hover .slider-image img {
+            transform: scale(1.05);
+        }
+
+        .slider-content {
+            padding: 15px;
+            background-color: var(--white);
+        }
+
+        .slider-content h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .slider-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .slider-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .slider-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Activity Category Section */
+        .activity-category {
+            margin-bottom: 80px;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .category-header h2 {
+            margin-bottom: 15px;
+        }
+
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Activity Stats */
+        .activity-stats {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .activity-stat {
+            padding: 20px;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-weight: 600;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(rgba(231, 76, 60, 0.9), rgba(231, 76, 60, 0.9)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2120&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+        }
+
+        .cta-section h2:after {
+            background-color: var(--accent);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .slider-item {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+            }
+            
+            .slider-item {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hands-helping" style="font-size: 2rem; color: var(--primary); margin-right: 10px;"></i>
+                <h1>Sakuntala Charitable Trust</h1>
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#initiatives">Initiatives</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="index.html#volunteer">Volunteer</a></li>
+                <li><a href="index.html#donate">Donate</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Gallery Hero Section -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1>Our Photo Gallery</h1>
+            <p>Explore our activities through photos organized by date and category</p>
+            <a href="#timeline" class="btn">View Photos</a>
+        </div>
+    </section>
+
+    <!-- Photo Timeline -->
+    <section class="photo-timeline" id="timeline">
+        <div class="container timeline-container">
+            <div class="section-header">
+                <h2>Recent Activities</h2>
+                <p>Browse our latest initiatives and events</p>
+            </div>
+
+            <!-- Yesterday - Neelbad -->
+            <div class="timeline-item">
+                <div class="timeline-date">Yesterday</div>
+                <div class="timeline-location">Neelbad</div>
+                
+                <!-- Gro Eye Camp Slider -->
+                <div class="slider-container">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">Gro Eye Camp</h3>
+                    <div class="slider" id="eyeCampSlider">
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Eye Checkup">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Vision Testing</h4>
+                                <p>Conducting eye tests for community members</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1584467735871-8db9ac8d0918?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Eye Checkup">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Free Spectacles</h4>
+                                <p>Distributing free glasses to those in need</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Medical Camp">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Medical Consultation</h4>
+                                <p>Doctors providing free consultations</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2032&q=80" alt="Vaccination">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Health Awareness</h4>
+                                <p>Educating community about eye care</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Health Camp">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Patient Registration</h4>
+                                <p>Registering patients for the eye camp</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn prev" data-slider="eyeCampSlider">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" data-slider="eyeCampSlider">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- October 10 - Bhopal, Shastri Nagar -->
+            <div class="timeline-item">
+                <div class="timeline-date">October 10</div>
+                <div class="timeline-location">Bhopal, Shastri Nagar</div>
+                
+                <!-- Education Program Slider -->
+                <div class="slider-container">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">Education Program</h3>
+                    <div class="slider" id="educationSlider">
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Education Camp">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Classroom Session</h4>
+                                <p>Children attending educational classes</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="School Supplies">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Book Distribution</h4>
+                                <p>Distributing educational materials</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1535982337059-9a231f7ca0c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Digital Learning">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Digital Education</h4>
+                                <p>Teaching computer skills to children</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Student Interaction">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Interactive Learning</h4>
+                                <p>Engaging students in activities</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Teacher Student">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Teacher Guidance</h4>
+                                <p>Volunteers helping students with studies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn prev" data-slider="educationSlider">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" data-slider="educationSlider">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- October 8 - Neelbad -->
+            <div class="timeline-item">
+                <div class="timeline-date">October 8</div>
+                <div class="timeline-location">Neelbad</div>
+                
+                <!-- Student Help Slider -->
+                <div class="slider-container">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">Student Education Support</h3>
+                    <div class="slider" id="studentHelpSlider">
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Scholarship">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Scholarship Distribution</h4>
+                                <p>Providing financial aid to students</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="School Supplies">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Supply Distribution</h4>
+                                <p>Giving books and stationery to students</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Tutoring">
+                            </div>
+                            <div class="slider-content">
+                                <h4>After School Help</h4>
+                                <p>Volunteers tutoring students</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1535982337059-9a231f7ca0c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" alt="Computer Education">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Computer Classes</h4>
+                                <p>Teaching digital skills to students</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Group Study">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Group Study Sessions</h4>
+                                <p>Students learning together</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn prev" data-slider="studentHelpSlider">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" data-slider="studentHelpSlider">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- October 5 - Neelbad -->
+            <div class="timeline-item">
+                <div class="timeline-date">October 5</div>
+                <div class="timeline-location">Neelbad</div>
+                
+                <!-- Food Distribution Slider -->
+                <div class="slider-container">
+                    <h3 style="margin-bottom: 20px; color: var(--primary);">Food Distribution Drive</h3>
+                    <div class="slider" id="foodSlider">
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1559305289-1c403d043c6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Food Distribution">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Meal Preparation</h4>
+                                <p>Volunteers preparing nutritious meals</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Food Serving">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Food Serving</h4>
+                                <p>Distributing meals to community members</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1981&q=80" alt="Community Kitchen">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Community Kitchen</h4>
+                                <p>Operating the community kitchen</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Nutrition Program">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Nutrition Program</h4>
+                                <p>Special meals for children</p>
+                            </div>
+                        </div>
+                        <div class="slider-item">
+                            <div class="slider-image">
+                                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1980&q=80" alt="Elderly Food Service">
+                            </div>
+                            <div class="slider-content">
+                                <h4>Elderly Care</h4>
+                                <p>Special food service for senior citizens</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="slider-btn prev" data-slider="foodSlider">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn next" data-slider="foodSlider">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Stats -->
+    <section class="activity-stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Our Impact in Numbers</h2>
+                <p style="color: rgba(255,255,255,0.9);">Quantifying the difference we've made together</p>
+            </div>
+            <div class="stats-container">
+                <div class="activity-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-text">Children Educated</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="stat-number">15,000+</div>
+                    <div class="stat-text">Health Checkups</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="stat-number">50,000+</div>
+                    <div class="stat-text">Meals Served</div>
+                </div>
+                <div class="activity-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="stat-number">1,200+</div>
+                    <div class="stat-text">Families Supported</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join Our Mission</h2>
+            <p>Your support can help us expand our reach and create even greater impact in communities across India</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 40px;">
+                <a href="index.html#donate" class="btn">Donate Now</a>
+                <a href="index.html#volunteer" class="btn btn-outline">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sakuntala Charitable Trust</h3>
+                    <p>Creating a more equitable and compassionate society through education, empowerment, and social justice initiatives.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#initiatives">Initiatives</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="index.html#volunteer">Volunteer</a></li>
+                        <li><a href="index.html#donate">Donate</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Activities</h3>
+                    <ul>
+                        <li><a href="#eyeCampSlider">Eye Checkup Camps</a></li>
+                        <li><a href="#educationSlider">Education Programs</a></li>
+                        <li><a href="#studentHelpSlider">Student Support</a></li>
+                        <li><a href="#foodSlider">Food Distribution</a></li>
+                        <li><a href="#">Community Development</a></li>
+                        <li><a href="#">Women Empowerment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Transparency Reports</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sakuntala Charitable Trust. All Rights Reserved. | Registered under Indian Trusts Act</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-menu').classList.remove('active');
+            });
+        });
+
+        // Slider Functionality
+        const sliderButtons = document.querySelectorAll('.slider-btn');
+        
+        sliderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const direction = this.classList.contains('prev') ? -1 : 1;
+                const sliderId = this.getAttribute('data-slider');
+                const slider = document.getElementById(sliderId);
+                
+                const scrollAmount = 320; // Width of slider item + gap
+                slider.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'var(--white)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
